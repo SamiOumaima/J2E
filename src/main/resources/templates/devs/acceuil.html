@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+<head>
+	<title>Developpeur</title>
+</head>
+
+<body>
+<div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+<ul>
+	<li>
+		<a th:href="@{/newDevs}">Ajouter Developpeur</a>
+	 </li>
+	 <li >
+		<a  th:href="@{/showTicketsUpdate}">liste les tickets attribués au développeur</a>
+	 </li>
+	 <li >
+		<a  th:href="@{/showDevs}">Afficher Tous Les Developpeur</a>
+	 </li>
+	 <li >
+		<a th:href="@{/showTicketDev}">Mettre à jour le statut d’un ticket </a>
+	 </li>
+
+	</ul>
+
+</html>

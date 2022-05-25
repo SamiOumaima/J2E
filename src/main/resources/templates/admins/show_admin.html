@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin</title>
+</head>
+<body>
+<div align="center">	
+			
+<div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+		<form th:action="@{/logout}" method="post" style="padding-left: 108%;">
+           <input type="submit" class="btn btn-light" value="Logout" />
+        </form>
+	<h1>Show All Admin</h1>
+	
+	
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>Client ID</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>EMAIL</th>		
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="aa : ${listAdmin}">
+				<td th:text="${aa.id}">Client ID</td>
+				<td th:text="${aa.nom}">Nom</td>
+				<td th:text="${aa.prenom}">Prenom</td>
+				<td th:text="${aa.email}">Email</td>
+			
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

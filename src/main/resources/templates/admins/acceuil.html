@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+<head>
+	<title>Admin</title>
+</head>
+
+<body>
+<div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+<ul>
+	<li>
+		<a  th:href="@{/newAdmin}">Ajouter Admin</a>
+	 </li>
+	 <li >
+		<a  th:href="@{/showAllAdmin}">Afficher Tous Les Admins</a>
+	 </li>
+	 <li >
+		<a  th:href="@{/showTicketsUpdateAdmin}">Liste des bugs non attribués</a>
+	 </li>
+	 <li >
+		<a th:href="@{/ShowTicketDev}">attribuer un ticket à un développeur</a>
+	 </li>
+	  <li >
+		<a th:href="@{/ShowDevAtt}">Liste des développeur attribuer</a>
+	 </li>
+	</ul>
+</body>
+
+</html>

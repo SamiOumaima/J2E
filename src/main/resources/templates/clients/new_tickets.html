@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create New Ticket</title>
+</head>
+<body>
+	<div align="center">	
+		<h1>Ajouter Ticket</h1>
+		<br/>
+		<form action="#" th:action="@{/saveT}" th:object="${tickets}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Description:</td>
+					<td><input type="text" th:field="*{description}" /></td>
+				</tr>
+				<tr>
+					<td>Environnement:</td>
+					<td><input type="text" th:field="*{environnement}" /></td>
+				</tr>				
+				<tr>
+					<td>Logiciel</td>
+					<td><input type="text" th:field="*{logiciel}" /></td>
+				</tr>	
+				<tr>
+					<td>Urgence</td>
+				<td>
+				<select th:field="*{urgence}">
+			    
+			        <option value="critique" >
+			             critique
+			        </option>
+			        <option value="urgent" >
+			             urgent
+			        </option>
+			        <option value="normal" >
+			             normal
+			        </option>
+			        <option value="non urgent" >
+			              non urgent
+			        </option>
+			    </select>       
+			    </td>
+				<td>
+				
+				</td>
+				</tr>	
+				<tr >
+					<td>Client</td>
+					
+				<td><select th:field="*{client}">
+			   <option th:each="cl : ${listClients}" th:value="${cl.id}" th:text="${cl.nom}"></option>
+			    </option>
+			</select>
+				
+				</td>
+				
+				</tr>					
+				<tr>
+					<td colspan="2"><button type="submit">Enregistrer</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

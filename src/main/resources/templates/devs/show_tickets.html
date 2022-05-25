@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Show Tickets</title>
+</head>
+<body>
+<div align="center">	
+			
+
+	
+	<h1>Liste des tickets attribués au Développeur</h1>
+	
+	
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+			
+				<th>Description</th>
+				<th>Enviromenement</th>
+				<th>Logiciel</th>	
+				<th>Status</th>		
+				<th>Urgence</th>
+				<th>Client</th>	
+				<th>Developpeur</th>	
+				<th>Admin</th>	
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="tickets : ${listTickets}">
+				<td th:text="${tickets.description}">Description</td>
+				<td th:text="${tickets.environnement}">Enviromenement</td>
+				<td th:text="${tickets.logiciel}">Logiciel</td>
+				<td th:text="${tickets.statut}">Status</td>
+				<td th:text="${tickets.urgence}">Urgence</td>
+				<td th:text="${tickets.client}">Client</td>
+				<td th:text="${tickets.developpeur}">Developpeur</td>
+				<td th:text="${tickets.admin}">Admin</td>
+				<!--<td> <a th:href="@{/updateDevs/{id}(id=${tickets.id})}" class="btn btn-success" />Update</td>
+				-->
+				
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

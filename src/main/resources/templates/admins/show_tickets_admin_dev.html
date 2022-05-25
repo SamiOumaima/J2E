@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Show Tickets</title>
+</head>
+<body>
+<div align="center">	
+		
+<div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+		<form th:action="@{/logout}" method="post" style="padding-left: 108%;">
+           <input type="submit" class="btn btn-light" value="Logout" />
+        </form>
+	
+	<h1>Attribuer un ticket à un développeur </h1>
+	
+	
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+			
+				<th>Description</th>
+				<th>Enviromenement</th>
+				<th>Logiciel</th>	
+				<th>Status</th>		
+				<th>Urgence</th>
+				<th>Client</th>
+				<th>Developpeur</th>	
+				<th>Admin</th>	
+				<th>Affectation</th>		
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="tickets : ${listTickets}">
+				<td th:text="${tickets.description}">Description</td>
+				<td th:text="${tickets.environnement}">Enviromenement</td>
+				<td th:text="${tickets.logiciel}">Logiciel</td>
+				<td th:text="${tickets.statut}">Status</td>
+				<td th:text="${tickets.urgence}">Urgence</td>
+				<td th:text="${tickets.client}">Client</td>
+				<td th:text="${tickets.developpeur}">Developpeur</td>
+				<td th:text="${tickets.admin}">Admin</td>
+				<td> <a th:href="@{/updateDevsAdmin/{id}(id=${tickets.id})}" class="btn btn-success" />Affecter Developpeur</td>
+				
+				
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

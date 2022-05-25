@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create New Developpeur</title>
+</head>
+<body>
+	<div align="center">	
+		<h1>Affectation D'un Developpeurr</h1>
+		<br/>
+		<form action="#" th:action="@{/saveStatus}"  th:object="${tickets}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+				
+				<td>Affectation D'un Developpeur </td>
+				<td><input type="text" hidden  th:field="*{id}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{description}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{environnement}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{logiciel}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{urgence}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{client}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{admin}" readonly="readonly" /></td>
+					<td><select th:field="*{developpeur}">
+				            <option th:each="dv : ${listDevs}" th:value="${dv.id}" th:text="${dv.prenom}">
+				            </option>
+			            </select>
+				</td>
+			    <td colspan="2"><button type="submit">Affecter</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

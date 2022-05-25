@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+<head>
+	<title> Client</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+<ul>
+	<li>
+		<a  th:href="@{/newClient}">Ajouter Client</a>
+	 </li>
+	 <li >
+		<a  th:href="@{/newClientTicket}">Ajouter Tickets</a>
+	 </li>
+	 <li >
+		<a  th:href="@{/showClient}">Afficher Tous Les Clients</a>
+	 </li>
+	 <li >
+		<a th:href="@{/showTickets}">Afficher Tous Les Tickets d'un Client'</a>
+	 </li>
+
+	</ul>
+</body>
+
+</html>

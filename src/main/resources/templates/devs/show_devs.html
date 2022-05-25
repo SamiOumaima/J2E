@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Liste Des Développeurs</title>
+</head>
+<body>
+<div align="center">	
+			
+
+	
+	<h1>Liste Des Développeurs</h1>
+	
+	
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>Client ID</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Email</th>		
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="devs : ${listDevs}">
+				<td th:text="${devs.id}">Developpeur ID</td>
+				<td th:text="${devs.nom}">Nom</td>
+				<td th:text="${devs.prenom}">Prenom</td>
+				<td th:text="${devs.email}">Email</td>
+			
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

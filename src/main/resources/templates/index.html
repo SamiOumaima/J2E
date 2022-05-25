@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default}">
+
+<head>
+	<title>Accueil</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body class="container">
+	<section layout:fragment="contenu">
+	<br>
+	<br>
+	<br>
+		<h1>Acceuil</h1>
+		
+<div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+		<form th:action="@{/logout}" method="post" style="padding-left: 108%;">
+           <input type="submit" class="btn btn-light" value="Logout" />
+        </form>
+<div>
+	<ul>
+
+	 <li sec:authorize="hasRole('ADMIN')" >
+		<a  th:href="@{/newAdmin}">Ajouter Admin</a>
+	 </li>
+	 <li sec:authorize="hasRole('ADMIN')">
+		<a  th:href="@{/showAllAdmin}">Liste Des Admins</a>
+	 </li>
+	 <li sec:authorize="hasRole('ADMIN')">
+		<a  th:href="@{/showTicketsUpdateAdmin}">Liste des bugs non attribués</a>
+	 </li>
+	 <li sec:authorize="hasRole('ADMIN')">
+		<a th:href="@{/ShowTicketDev}">Attribuer un ticket à un développeur</a>
+	 </li>
+	  <li  sec:authorize="hasRole('ADMIN')">
+		<a th:href="@{/ShowDevAtt}">Liste des développeur attribuées</a>
+	 </li>
+	 
+
+	 <li sec:authorize="hasRole('DEV')">
+		<a th:href="@{/newDevs}">Ajouter Developpeur </a>
+	 </li >
+	 <li sec:authorize="hasRole('DEV')">
+		<a  th:href="@{/showTicketsUpdate}">Liste des tickets attribuées au développeur</a>
+	 </li>
+	 <li sec:authorize="hasRole('DEV')">
+		<a  th:href="@{/showDevs}">Liste Des Developpeurs Affectées par Admin</a>
+	 </li>
+	 <li sec:authorize="hasRole('DEV')">
+		<a th:href="@{/showTicketDev}">Mettre à jour le statut d’un ticket </a>
+	 </li>
+	 
+
+	 <li sec:authorize="hasRole('CLIENT')">
+		<a  th:href="@{/newClient}">Ajouter Client</a>
+	 </li >
+	 <li sec:authorize="hasRole('CLIENT')">
+		<a  th:href="@{/newClientTicket}">Ajouter Ticket</a>
+	 </li>
+	 <li sec:authorize="hasRole('CLIENT')">
+		<a  th:href="@{/showClient}">Afficher Tous Les Clients</a>
+	 </li>
+	 <li sec:authorize="hasRole('CLIENT')">
+		<a th:href="@{/showTickets}">Afficher Les Tickets d'un Client</a>
+	 </li>
+
+	</ul>
+</div>
+		<div sec:authorize ="!isAuthenticated()">
+		<span>Déjà enregistré? <a href="/" th:href="@{/login}">Login</a></span>
+		</div>
+	</section>
+
+
+</body>
+
+</html>

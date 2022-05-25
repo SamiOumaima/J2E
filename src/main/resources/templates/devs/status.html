@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mise a jour Status</title>
+</head>
+<body>
+	<div align="center">	
+		<h1>Mise a jour Status</h1>
+		<br/>
+		<form action="#" th:action="@{/saveStatus}"  th:object="${tickets}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+				
+				<td>Mise a jour Status </td>
+				<td><input type="text" hidden th:field="*{id}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{description}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{environnement}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{logiciel}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{urgence}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{client}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{developpeur}" readonly="readonly" /></td>
+				<td><input type="text" hidden th:field="*{admin}" readonly="readonly" /></td>
+				
+					<td>
+					<select th:field="*{statut}">
+			   
+			        <option value="résolu" >
+			             résolu
+			        </option>
+			        <option value="en cours de traitement" >
+			              en cours de traitement
+			        </option>
+			        </select>       
+			    </td>
+			    <td colspan="2"><button type="submit">Update</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
